@@ -35,7 +35,7 @@ public class ZooKeeperServiceDiscovery implements ServiceDiscovery {
         } else {
             address = children.get(ThreadLocalRandom.current().nextInt(children.size()));
         }
-        String path = zkClient.readData(servicePath+"/"+address);
+        String path = zkClient.readData(servicePath + "/" + address);
         return path;
     }
 }

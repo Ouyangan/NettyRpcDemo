@@ -8,8 +8,8 @@ import org.springframework.util.StopWatch;
 
 public class ClientTest {
     @Test
-    public void clientTest() throws InterruptedException {
-        StopWatch watch = new StopWatch();
+    public void start() throws InterruptedException {
+        StopWatch watch = new StopWatch("测试结果");
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-client.xml");
         RpcClient client = context.getBean(RpcClient.class);
         HelloService helloService = client.create(HelloService.class);
@@ -20,8 +20,8 @@ public class ClientTest {
         person.setAge(25);
         person.setDesc("java开发");
         person.setSex(2);
-        for (int i = 0; i < 100; i++) {
-            watch.start("第"+(i+1)+"次");
+        for (int i = 0; i < 10; i++) {
+            watch.start("第" + (i + 1) + "次");
             Person insert = helloService.insert(person);
             System.out.println(insert);
             watch.stop();

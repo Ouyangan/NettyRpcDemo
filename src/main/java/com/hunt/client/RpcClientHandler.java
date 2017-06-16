@@ -19,8 +19,8 @@ public class RpcClientHandler extends SimpleChannelInboundHandler<RpcResponse> {
 
     private RpcResponse response;
 
-    private  EventLoopGroup group = new NioEventLoopGroup();
-    private  Bootstrap bootstrap = new Bootstrap();
+    private EventLoopGroup group = new NioEventLoopGroup();
+    private Bootstrap bootstrap = new Bootstrap();
 
     public RpcClientHandler(String host, int port) {
         this.host = host;

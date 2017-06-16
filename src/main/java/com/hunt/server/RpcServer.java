@@ -13,10 +13,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.FixedLengthFrameDecoder;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.LineBasedFrameDecoder;
-import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -24,9 +20,6 @@ import org.springframework.context.ApplicationContextAware;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ouyangan on 2017/6/14.
@@ -70,7 +63,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
                     .sync();
             if (serviceRegistry != null) {
                 for (String serviceName : handlerMap.keySet()) {
-                    serviceRegistry.register(serviceName,serverAddress);
+                    serviceRegistry.register(serviceName, serverAddress);
                 }
             }
             channelFuture.channel().closeFuture().sync();
@@ -83,7 +76,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         Map<String, Object> beansWithAnnotationMap = applicationContext.getBeansWithAnnotation(RpcService.class);
-        if (MapUtils.isEmpty(beansWithAnnotationMap)) {
+        if (beansWithAnnotationMap == null) {
             return;
         }
         for (Object bean : beansWithAnnotationMap.values()) {

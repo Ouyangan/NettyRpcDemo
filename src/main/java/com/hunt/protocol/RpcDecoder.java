@@ -5,10 +5,9 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class RpcDecoder extends ByteToMessageDecoder{
+public class RpcDecoder extends ByteToMessageDecoder {
 
     private Class<?> cls;
 
@@ -36,7 +35,7 @@ public class RpcDecoder extends ByteToMessageDecoder{
         //读取相应大小的数据
         in.readBytes(data);
         //反序列话
-        Object object= SerializationUtil.deserialize(data, cls);
+        Object object = SerializationUtil.deserialize(data, cls);
         out.add(object);
         ctx.flush();
     }

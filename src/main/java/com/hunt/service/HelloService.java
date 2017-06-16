@@ -7,5 +7,6 @@ import com.hunt.model.Person;
  */
 public interface HelloService {
     String hello(String name);
+
     Person insert(Person person);
 }

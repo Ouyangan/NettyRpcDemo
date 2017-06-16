@@ -12,7 +12,7 @@ public class ServerTest {
     private static final Logger log = getLogger(ServerTest.class);
 
     @Test
-    public void startUp() {
+    public void start() {
         log.debug("start server");
         new ClassPathXmlApplicationContext("spring-server.xml");
     }

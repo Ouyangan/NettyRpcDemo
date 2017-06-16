@@ -1,11 +1,9 @@
 package com.hunt.protocol;
 
-import java.io.Serializable;
-
 /**
  * Created by ouyangan on 2017/6/14.
  */
-public class RpcResponse  {
+public class RpcResponse {
     private String requestId;
     private String error;
     private Object result;
@@ -32,10 +30,6 @@ public class RpcResponse  {
         return error;
     }
 
-    public void setError(String error) {
-        this.error = error;
-    }
-
     public Object getResult() {
         return result;
     }
@@ -44,7 +38,11 @@ public class RpcResponse  {
         this.result = result;
     }
 
-    public boolean isError(){
-        return this.error!=null;
+    public boolean isError() {
+        return this.error != null;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }
